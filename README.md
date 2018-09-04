@@ -16,6 +16,8 @@ are limited to:
 
 * x86/Linux
 
+Of course other architectures and operating systems will be added in the future.
+
 ## Installation
 
 To install shellerate to your system you can issue the following command:
@@ -25,6 +27,11 @@ To install shellerate to your system you can issue the following command:
 ## Available payloads
 
 ### TCP Bind shell shellcode
+
+This shellcode will bind on a given port, waiting for clients and spawn a shell
+on the incoming connection.
+
+At the moment, this shellcode is available only for x86/Linux platform.
 
 ```python
 from shellerate.bind_shellcode import *

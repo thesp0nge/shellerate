@@ -10,3 +10,7 @@ You can feature custom encoders, custom crypters, polymorphism and all stuff I
 learnt in the SLAE certification process.
 
 ## [Unreleased]
+
+## [0.1.0] - 2018-09-04
+### Added
+- x86/Linux: TCP Bind shell shellcode added
