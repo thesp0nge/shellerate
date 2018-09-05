@@ -5,8 +5,8 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="shellerate",
-    version="0.1.0",
-    python_requires='>=3.6.*'
+    version="0.2.0",
+    python_requires='>=3.6.*',
     author="Paolo Perego",
     author_email="paolo@codiceinsicuro.it",
     description="A shellcode generator with encryption, encoding and polymorphism facilities built-in",
@@ -14,6 +14,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/thesp0nge/shellerate",
     packages=["shellerate"],
+    scripts=["bin/shellerate"],
+    #install_requires=["binutils"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

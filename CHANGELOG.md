@@ -7,9 +7,20 @@ This the Changelog file for the shellerate project. 'shellerate' is pun between
 took for the SecurityTube Linux Assembly Expert certification process.
 
 You can feature custom encoders, custom crypters, polymorphism and all stuff I
-learnt in the SLAE certification process.
+learned in the SLAE certification process.
 
 ## [Unreleased]
+
+## [0.2.0] - 2018-09-05
+### Added
+- logging facilities in tcp bind shellcode
+- added egg hunter generator for tcp bind shellcode
+
+### Changed
+- now shellcode() is a method returning the internal shellcode representation.
+  From a semantic versioning point of view, this could reserve a major version
+  upgrade, however we didn't reach version 1.0.0 so I can bump only minor
+  version.
 
 ## [0.1.0] - 2018-09-04
 ### Added
