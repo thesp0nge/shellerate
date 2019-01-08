@@ -60,9 +60,10 @@ Usage with egg hunter
 ```python
 from shellerate.bind_shellcode import *
 b=BindShellcode(4444, 'x86', 'linux')
-b.set_egg("\\x11\\x22\\x33\\x44")
+b.egg_hunter()
 b.generate()
+sc = b.shellcode()
 
-print("Egg hunter: %s" % b.egg_hunter())
-print("Shellcode: %s" % b.shellcode())
+print("Egg Hunter: %s" % sc["egg_hunter_code"])
+print("Shellcode: %s" % sc["egg_hunter_shellcode"])
 ```
