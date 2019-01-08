@@ -39,7 +39,7 @@ At the moment, this shellcode is available only for x86/Linux platform.
 
 | Feature | Supported |
 |---------|-----------|
-| Encoding | No |
+| Encoding | Yes |
 | Crypter | No |
 | Egg Hunter | Yes |
 
