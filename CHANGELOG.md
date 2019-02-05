@@ -11,6 +11,17 @@ learned in the SLAE certification process.
 
 ## [Unreleased]
 
+## [0.4.0] - 2019-02-05
+### Added
+- Adding Win32 bind shell shellcode (taken as is from msfvenom)
+### Changed
+- Minor tweaks to binary script
+
+## [0.3.0] - 2019-01-08
+### Added
+- Adding encoder class
+- Adding encoder support for bind_shell shellcode
+
 ## [0.2.0] - 2018-09-05
 ### Added
 - logging facilities in tcp bind shellcode
