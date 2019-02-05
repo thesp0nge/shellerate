@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="shellerate",
-    version="0.3.0",
+    version="0.4.0",
     python_requires='>=3.6.*',
     author="Paolo Perego",
-    author_email="paolo@codiceinsicuro.it",
+    author_email="paolo@armoredcode.com",
     description="A shellcode generator with encryption, encoding and polymorphism facilities built-in",
     long_description=long_description,
     long_description_content_type="text/markdown",
