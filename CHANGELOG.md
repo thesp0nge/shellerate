@@ -11,6 +11,16 @@ learned in the SLAE certification process.
 
 ## [Unreleased]
 
+## [0.5.0] - 2019-xx-xx
+### Changed
+A lot of work it has been down on encoder classes. Biggest change is the
+introduction of encoding strategies support. For such a reason, we must
+implement specialized classes doing encoding.
+
+The encoder.py file is moved on a adhoc directory and it will be the main
+encoding class with all basic functionalities.
+
+
 ## [0.4.0] - 2019-02-05
 ### Added
 - Adding Win32 bind shell shellcode (taken as is from msfvenom)
