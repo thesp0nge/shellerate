@@ -18,6 +18,10 @@ class NotEncoder(Encoder):
     for c in textwrap.wrap(padded_shellcode, 16):
       val=self.from_char_to_hexcode(c)
       neg=self.not_byte(val) + 1
+      print(c)
+      print(val)
+      print(neg)
+
 
       if output_format == "c":
         output += ''.join('\\x{:02x}'.format(x) for x in struct.pack("l", neg )).replace("\\xff\\xff\\xff\\xff", "")

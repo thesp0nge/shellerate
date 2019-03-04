@@ -9,6 +9,9 @@ class Encoder:
     ret = string + "\\x90" * (4-(string.count("\\x")%4))
     return ret
 
+  def split(self, string, n=2):
+    return [string[i:i+n] for i in range(0, len(string), n)]
+
 
   # This method takes a byte in a printable char representation and give the
   # hex code.
@@ -31,7 +34,7 @@ class Encoder:
 
   def encode(self):
     raise NotImplementedError
-  def generate_decoder(self):
+  def payload(self):
     raise NotImplementedError
 
     #padded_shellcode = self.pad(self.__shellcode)
