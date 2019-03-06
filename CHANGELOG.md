@@ -12,6 +12,10 @@ learned in the SLAE certification process.
 ## [Unreleased]
 
 ## [0.5.0] - 2019-xx-xx
+
+### Added
+- XORity custom encoder
+
 ### Changed
 A lot of work it has been down on encoder classes. Biggest change is the
 introduction of encoding strategies support. For such a reason, we must

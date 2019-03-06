@@ -24,7 +24,7 @@ class Encoder:
 
   def xor_str(self, a,b):
     result = int(a, 16) ^ int(b, 16) # convert to integers and xor them
-    return '{:x}'.format(result) 
+    return '{:02x}'.format(result) 
 
   def swap(self, x):
     s=x[6:8] + x[4:6] + x[2:4] + x[0:2]
