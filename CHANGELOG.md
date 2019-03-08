@@ -15,6 +15,11 @@ learned in the SLAE certification process.
 
 ### Added
 - XORity custom encoder
+- math, asm_x86 and strings modules
+- zero_with_and(): generates a shellcode zeroing a register using 2 ADD
+  instructions.
+- get_esp_address_in_eax(): saves ESP value into EAX using push and pop
+  strategy
 
 ### Changed
 A lot of work it has been down on encoder classes. Biggest change is the

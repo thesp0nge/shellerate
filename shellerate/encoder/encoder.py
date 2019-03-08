@@ -1,23 +1,24 @@
 import textwrap;
 from binascii import unhexlify, hexlify;
+from shellerate.utils import *;
 
 class Encoder:
   def __init__(self, shellcode):
     self.__shellcode = shellcode;
   
-  def pad(self, string):
-    ret = string + "\\x90" * (4-(string.count("\\x")%4))
-    return ret
+  # def pad(self, string):
+  #   ret = string + "\\x90" * (4-(string.count("\\x")%4))
+  #   return ret
 
-  def split(self, string, n=2):
-    return [string[i:i+n] for i in range(0, len(string), n)]
+  # def split(self, string, n=2):
+  #   return [string[i:i+n] for i in range(0, len(string), n)]
 
 
   # This method takes a byte in a printable char representation and give the
   # hex code.
   #   "\\x31" => "31"
-  def from_char_to_hexcode(self, a):
-    return a.replace("\\x", "")
+  # def from_char_to_hexcode(self, a):
+  #   return a.replace("\\x", "")
 
   def not_byte(self, a):
     return  ~ int(a, 16)
@@ -26,9 +27,10 @@ class Encoder:
     result = int(a, 16) ^ int(b, 16) # convert to integers and xor them
     return '{:02x}'.format(result) 
 
-  def swap(self, x):
-    s=x[6:8] + x[4:6] + x[2:4] + x[0:2]
-    return s
+  # def swap(self, x):
+  #   s=x[6:8] + x[4:6] + x[2:4] + x[0:2]
+  #   return s
+
   def shellcode(self):
     return self.__shellcode
 
