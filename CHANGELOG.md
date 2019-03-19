@@ -14,6 +14,7 @@ learned in the SLAE certification process.
 ## [0.5.0] - 2019-xx-xx
 
 ### Added
+- nop_sled(): creates a NOP sled
 - XORity custom encoder
 - math, asm_x86 and strings modules
 - zero_with_and(): generates a shellcode zeroing a register using 2 ADD
