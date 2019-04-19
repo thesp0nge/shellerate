@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="shellerate",
-    version="0.4.2",
+    version="0.4.3",
     python_requires='>=3.6.*',
     author="Paolo Perego",
     author_email="paolo@armoredcode.com",

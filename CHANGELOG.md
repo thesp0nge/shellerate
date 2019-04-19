@@ -30,6 +30,8 @@ implement specialized classes doing encoding.
 The encoder.py file is moved on a adhoc directory and it will be the main
 encoding class with all basic functionalities.
 
+I made the package flat in shellerate directory to make imports easier, will
+refactor back later on.
 
 ## [0.4.0] - 2019-02-05
 ### Added
