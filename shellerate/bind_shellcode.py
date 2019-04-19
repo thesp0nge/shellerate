@@ -1,6 +1,6 @@
 import socket, binascii, logging
-from shellerate.encoder import *
-from shellerate.egg_hunter import *
+from shellerate import encoder
+from shellerate import egg_hunter
 
 class BindShellcode:
     def __init__(self, port, arch, os):
@@ -89,12 +89,12 @@ class BindShellcode:
 
       if self.__encode:
         logging.debug("Custom encoder called");
-        enc=Encoder(self.__shellcode, self.__encode_key)
+        enc=encoder.Encoder(self.__shellcode, self.__encode_key)
         self.__encoded_shellcode = enc.encode()
 
       if self.__egg_hunter:
         logging.debug("An egg it has been found... creating egg hunter shellcode");
-        egg = EggHunter(self.__shellcode, self.__egg_hunter_key)
+        egg = egg_hunter.EggHunter(self.__shellcode, self.__egg_hunter_key)
 
         self.__egg_hunter_code = egg.hunter_code()
         self.__egg_hunter_shellcode=egg.generate()

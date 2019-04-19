@@ -1,7 +1,8 @@
 import secrets
 import logging
 
-from shellerate.utils import strings
+from shellerate import strings
+ 
 
 def has_restricted_chars(string, r_chars=[]):
   for i in r_chars:

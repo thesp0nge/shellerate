@@ -1,6 +1,5 @@
 import textwrap;
 from binascii import unhexlify, hexlify;
-from shellerate.utils import *;
 
 class Encoder:
   def __init__(self, shellcode):

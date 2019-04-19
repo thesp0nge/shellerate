@@ -3,13 +3,13 @@ import textwrap
 import secrets
 import logging
 
-from shellerate.encoder.encoder import Encoder
+from shellerate import encoder;
 from binascii import unhexlify, hexlify;
-from shellerate.utils import strings;
+from shellerate import strings;
 
 # First version with clear text decoder stub: https://www.virustotal.com/#/file/7b25b33a1527d2285ebdefd327bc72b6d932c140489e8bfb7424bef115aa2ecd/detection
 
-class Xority(Encoder):
+class Xority(encoder.Encoder):
   def __init__(self, shellcode):
     super(Xority, self).__init__(shellcode)
     self.debug=True;
