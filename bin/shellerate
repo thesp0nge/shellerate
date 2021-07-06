@@ -1,9 +1,31 @@
-from shellerate.encoder.xority import Xority
-from shellerate.bind_shellcode import *
-#logging.basicConfig(format="%(asctime)s [%(levelname)8s] - %(message)s", level=logging.DEBUG)
+#!/usr/bin/env python3
 
-b=BindShellcode(4444, 'x86', 'win')
-b.generate()
-e=Xority(b.shellcode())
-print(b.shellcode())
-print(e.payload())
+import sys
+import logging
+
+from shellerate.payloads.bind_shellcode import BindShellcode
+from shellerate.xority import Xority
+
+logging.basicConfig(format="%(asctime)s [%(levelname)8s] - %(message)s", level=logging.DEBUG)
+
+# logging.info("start")
+
+def shellerate():
+        port=4444
+        os="lin"
+        if (port < 1 or port > 65535):
+            logging.error("port number must be between 1 and 65535")
+            sys.exit(-1)
+        if (os != "win" and os != "lin"):
+            logging.error("valid values for operating system are: lin and win")
+            sys.exit(-1)
+        logging.error("F")
+        b=BindShellcode(port, 'x86', os)
+        b.generate()
+        # logging.info("bind shell shellcode. OS: " + os + ". bind(2) port: "+port)
+        print(b.shellcode())
+    # e=Xority(b.shellcode())
+    # print(e.payload())
+
+if __name__ == "__main__":
+    shellerate()

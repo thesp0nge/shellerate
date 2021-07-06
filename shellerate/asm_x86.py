@@ -1,3 +1,6 @@
+import secrets
+from shellerate.math import *;
+
 def get_where_am_i_in_ecx():
     # fldz
     # fnstenv [esp-12]
@@ -8,8 +11,7 @@ def get_where_am_i_in_ecx():
 # jumps is how many 256 bytes backword jump you want to take
 def jmp_backwards_ecx(jumps=1):
     return get_where_am_i_in_ecx() + "\xfe\xcd" * jumps + "\xff\xe1"
-   
-         
+
 def zero_eax():
   """
     Creates a shellcode that set the EAX register 0 using two AND instructions.
@@ -41,7 +43,7 @@ def zero_with_and(reg="eax", badchar=[]):
 
   if reg == "eax":
     return "\\x25"+first_and_hex+"\\x25"+second_and_hex
-  
+
   if reg == "ebx":
     return "\\xb1\\xe3"+first_and_hex+"\\xb1\\xe3"+second_and_hex
   if reg == "ebx":
@@ -50,9 +52,6 @@ def zero_with_and(reg="eax", badchar=[]):
     return "\\xb1\\xe1"+first_and_hex+"\\xb1\\xe1"+second_and_hex
   if reg == "edx":
     return "\\xb1\\xe2"+first_and_hex+"\\xb1\\xe2"+second_and_hex
-
- 
-
 
 def nop_sled(count=1):
     return "\\x90"*count
