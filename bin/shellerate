@@ -1,31 +1,97 @@
 #!/usr/bin/env python3
 
 import sys
+import argparse
 import logging
+import pkg_resources
 
 from shellerate.payloads.bind_shellcode import BindShellcode
 from shellerate.xority import Xority
 
-logging.basicConfig(format="%(asctime)s [%(levelname)8s] - %(message)s", level=logging.DEBUG)
+logging.basicConfig(format="%(asctime)s [%(levelname)8s] - %(message)s", level=logging.INFO)
 
 # logging.info("start")
 
-def shellerate():
+def bind(family, port, egg_hunter="none", xor_encoder="none"):
+    if port == None:
         port=4444
-        os="lin"
+    else:
         if (port < 1 or port > 65535):
             logging.error("port number must be between 1 and 65535")
             sys.exit(-1)
-        if (os != "win" and os != "lin"):
-            logging.error("valid values for operating system are: lin and win")
-            sys.exit(-1)
-        logging.error("F")
-        b=BindShellcode(port, 'x86', os)
-        b.generate()
-        # logging.info("bind shell shellcode. OS: " + os + ". bind(2) port: "+port)
-        print(b.shellcode())
+    if (family != "win" and family != "lin"):
+        logging.error("valid values for operating system are: lin and win")
+        sys.exit(-1)
+    b=BindShellcode(port, 'x86', family)
+
+    if egg_hunter != "none":
+        b.egg_hunter()
+        if egg_hunter != "default":
+            b.set_egg_hunter_key(egg_hunter)
+
+    b.generate()
+    # logging.info("bind shell shellcode. OS: " + os + ". bind(2) port: "+port)
+    print("bindshell shellcode: " + b.shellcode())
+    if egg_hunter != "none":
+        print("egghunter shellcode: " + b.get_egg_hunter_code())
     # e=Xority(b.shellcode())
     # print(e.payload())
 
+def reverse(family, ip, port):
+    logging.info(port)
+    if port == None:
+        port=4444
+    else:
+        if (port < 1 or port > 65535):
+            logging.error("port number must be between 1 and 65535")
+            sys.exit(-1)
+    if (family != "win" and family != "lin"):
+        logging.error("valid values for operating system are: lin and win")
+        sys.exit(-1)
+    logging.warning("reverse shell shellcode generation not yet implemented")
+    # b=BindShellcode(port, 'x86', family)
+    # b.generate()
+    # print(b.shellcode())
+    # e=Xority(b.shellcode())
+
 if __name__ == "__main__":
-    shellerate()
+    # https://stackoverflow.com/questions/59221280/python-argparse-if-argument-selected-then-another-argument-required-true
+    my_parser = argparse.ArgumentParser(prog="shellerate", description="generate shellcode payloads")
+
+    base_parser = argparse.ArgumentParser(add_help=False)
+    base_parser.add_argument( "-f" , "--family", action="store", type=str, help="OS family shellcode", required=True)
+    base_parser.add_argument("-E", "--egg-hunter", action="store_true", help="Add an egghunter shellcode (default egg is w00t)")
+    base_parser.add_argument("--egg-hunter-value", action="store", type=str, help="Use this as egg value")
+    base_parser.add_argument("-x", "--xor-encode", action="store_true", help="Encode the shellcode using XOR (default key is 'deadbeef')")
+    base_parser.add_argument("--xor-key", action="store", type=str, help="Use this as XOR encoding/decoding key")
+
+    ver=pkg_resources.require("shellerate")[0].version
+
+    my_parser.add_argument('--version', action='version', version='%(prog)s {version}'.format(version=ver))
+
+    subparsers = my_parser.add_subparsers(dest='act', help='Sub-commands')
+    bind_parser = subparsers.add_parser("bind", help="bind shell shellcode generator", parents=[base_parser])
+    bind_parser.add_argument("-p", "--port", help="port number to be used by bind(2)", type=int)
+
+    rev_parser = subparsers.add_parser("reverse", help="reverse shell shellcode generator", parents=[base_parser])
+    rev_parser.add_argument("-i", "--ip", help="ip address to connect to", type=str)
+    rev_parser.add_argument("-p", "--port", help="port number to connect to", type=int)
+
+    args = my_parser.parse_args()
+
+    if args.act == "bind":
+        eh = "none"
+
+        if args.egg_hunter == True:
+            eh = "default"
+            if args.egg_hunter_value != None:
+                eh = args.egg_hunter_value
+        x_key = "none"
+        if args.xor_encode == True:
+            x_key="default"
+            if args.xor_key != None:
+                x_key = args.xor_key
+
+        bind(args.family, args.port, eh, x_key)
+    if args.act == "reverse":
+        reverse(args.family, args.ip, args.port)

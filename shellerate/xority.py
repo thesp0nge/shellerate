@@ -63,7 +63,7 @@ class Xority(encoder.Encoder):
     stub_raw = "eb225e8d3e31c031db31c931d28b1c0604048b140631d339cb740e891f83c7040404ebe9e8d9ffffff"
     if output_format == "raw":
       return stub_raw + self.encode("raw")
-    
+
     a=strings.split(stub_raw)
     if output_format == "c":
       stub=''.join('\\x'+x.zfill(2) for x in a)
